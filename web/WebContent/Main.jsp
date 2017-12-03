@@ -28,7 +28,7 @@
 		
 		<div class="user" style="float:left">
 			<ul class="ul01">
-					<li><span class="holle">你好，请</span><a href="http://www.shuchongwang.com/login.html">登录</a></li>
+					<li><a href="http://www.shuchongwang.com/login.html">登录</a></li>
 					<li class="log_top"><a href="http://www.shuchongwang.com/publicRaiseChannel/register.html">注册</a></li>
 			</ul>
 		</div>
