@@ -7,6 +7,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; utf-8">
 <title>web-pro</title>
+<style type="text/css">
+		.slides {
+			margin:0; padding:0; position:absolute; white-space: nowrap;
+			animation: myfirst 12s infinite;
+			height=1024px;
+			overflow:hideen;
+        }
+        @keyframes myfirst { 
+            0%{left: 0}
+            50% { left: -1024px; }
+            100% { left: -2048px; }
+          
+        }
+</style>
+
 </head>
 <body>
 <header class="header" style="position: fixed; top: 0px;">
@@ -34,7 +49,15 @@
 		</div>
 		
 	</div>
-	
+	<div style="clear:both"></div>
+	<div id="slide" style="height:200px;width:1024px;overflow:hidden;">
+         <div class="slides">
+                <span><img class="slide" src="./RES/slide1.jpg" height="180" width="1024" /></span>
+                <span><img class="slide" src="./RES/slide2.jpg" height="180" width="1024"/></span>
+                <span><img class="slide" src="./RES/slide3.jpg" height="180" width="1024"/></span>
+         </div>
+    </div>
+    
 </header>
 </body>
 </html>
