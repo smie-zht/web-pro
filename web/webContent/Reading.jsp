@@ -11,7 +11,7 @@ String connectString = "jdbc:mysql://172.18.187.234:53306/boke15352405"
 		+ "&characterEncoding=UTF-8&useSSL=false";  
  String user="user"; 
  String pwd="123"; 
- String bname="lover";  //book_name
+ String bname=request.getParameter("book_name");  //book_name
  String bk_dir="";
  StringBuffer buffer = new StringBuffer();
  

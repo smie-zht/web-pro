@@ -60,8 +60,8 @@ String connectString = "jdbc:mysql://172.18.187.234:53306/boke15352405"
 		 String bk_url = SQLitem[5].replaceAll("\\\\", "/");
 		 //out.print("ok  "+pic_url);
 		 String sql="insert into book_info(book_name,book_author,book_image,book_url,book_info,book_type)"
-	     +" values('"+SQLitem[0]+"', '"+SQLitem[1]+"', '"+pic_url+"', '"+bk_url+"', '"+SQLitem[2]
-	    		 +"','"+SQLitem[3]+"')"; 
+	     +" values('"+SQLitem[0]+"', '"+SQLitem[1]+"', '"+pic_url+"', '"+bk_url+"', '"+SQLitem[3]
+	    		 +"','"+SQLitem[2]+"')"; 
 		                               //bname     aname        bpic       book     introduce    type
 //		 String sql = String.format(fmt,SQLitem[0],SQLitem[1],SQLitem[4],SQLitem[5],SQLitem[2],SQLitem[3]); 
 		 int cnt = stmt.executeUpdate(sql); 
