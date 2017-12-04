@@ -49,7 +49,7 @@ String connectString = "jdbc:mysql://172.18.187.234:53306/boke15352405"
 </head>
 	<body><%request.setCharacterEncoding("utf-8");%>
 	 <div class="container"> 
-	 	<h1>Reading</h1> 
+	 	<h1>欢迎阅读</h1> 
 	 	<div style="margin:0px auto">
 	 	 图书内容:<textarea name="filecontent" cols="100" rows="40">
 	 	 <%=buffer %>
