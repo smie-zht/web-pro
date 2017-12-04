@@ -11,7 +11,7 @@ String connectString = "jdbc:mysql://172.18.187.234:53306/boke15352405"
 		+ "&characterEncoding=UTF-8&useSSL=false";  
  String user="user"; 
  String pwd="123"; 
- String bname=request.getParameter("book_name");  //book_name
+ String bid=request.getParameter("bookid");  
  String bk_dir="";
  StringBuffer buffer = new StringBuffer();
  
@@ -20,7 +20,7 @@ String connectString = "jdbc:mysql://172.18.187.234:53306/boke15352405"
 	 Statement stmt = con.createStatement(); 
 	 try{ 
 		 //处理转义字符
-		 String sql = "select * from book_info where book_name = '"+bname+"'" ; 
+		 String sql = "select * from book_info where book_id = '"+bid+"'" ; 
 		 ResultSet rs=stmt.executeQuery(sql);
 		 //out.print("查询！");
 		 if(rs.next()){
