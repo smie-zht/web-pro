@@ -52,19 +52,18 @@ String connectString = "jdbc:mysql://172.18.187.234:53306/boke15352405"
 			 }
 		 }
 		 
-		 bname = request.getParameter("bname");
-		 aname = request.getParameter("aname");
-		 introduce = request.getParameter("introduce");
-		 String filePic = "pic-address";
-		 String fileBook = "book-address";
-		 bpic = filePic;
-		 book = fileBook;
 	 }
 	 try{ 
-		 String fmt="insert into book_info(book_name,book_author,book_image,book_url,book_info,book_type)"
-	     +" values('%s', '%s', '%s', '%s', '%s','%s')"; 
+		 //处理转义字符
+		 
+		 String pic_url = SQLitem[4].replaceAll("\\\\","/");
+		 String bk_url = SQLitem[5].replaceAll("\\\\", "/");
+		 //out.print("ok  "+pic_url);
+		 String sql="insert into book_info(book_name,book_author,book_image,book_url,book_info,book_type)"
+	     +" values('"+SQLitem[0]+"', '"+SQLitem[1]+"', '"+pic_url+"', '"+bk_url+"', '"+SQLitem[2]
+	    		 +"','"+SQLitem[3]+"')"; 
 		                               //bname     aname        bpic       book     introduce    type
-		 String sql = String.format(fmt,SQLitem[0],SQLitem[1],SQLitem[4],SQLitem[5],SQLitem[2],SQLitem[3]); 
+//		 String sql = String.format(fmt,SQLitem[0],SQLitem[1],SQLitem[4],SQLitem[5],SQLitem[2],SQLitem[3]); 
 		 int cnt = stmt.executeUpdate(sql); 
 		 if(cnt>0)msg = "上传成功成功!"; 
 		 stmt.close(); 
