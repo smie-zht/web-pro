@@ -27,16 +27,20 @@
 				String sql = String.format(fmt,username,password);
 				ResultSet rs=stmt.executeQuery(sql);
 				if(rs.next()){
-					
-					Cookie cookie = new Cookie("shuchongname",URLEncoder.encode(username, "UTF-8")); 
-					
-					cookie.setMaxAge(3600);//设置保留时间 3600秒。
-					//设置为负值表示只保存在内存(与未设置时间相同)，
-					// 关闭浏览器则消失。
-					// 设置为0表示要删除该cookie。
-					cookie.setPath("/"); //设置路径。未设置路径使用当前路径。
-					response.addCookie(cookie);
-					msg="登录成功,返回主页开始阅读吧!";
+					if(rs.getInt("user_able")==1) {
+						Cookie cookie = new Cookie("shuchongname",URLEncoder.encode(username, "UTF-8")); 
+						
+						cookie.setMaxAge(3600);//设置保留时间 3600秒。
+						//设置为负值表示只保存在内存(与未设置时间相同)，
+						// 关闭浏览器则消失。
+						// 设置为0表示要删除该cookie。
+						cookie.setPath("/"); //设置路径。未设置路径使用当前路径。
+						response.addCookie(cookie);
+						msg="登录成功,返回主页开始阅读吧!";
+					}
+					else {
+						msg="您的账号被关小黑屋啦，请联系管理员!";
+					}
 				}
 				else{
 					msg="帐户名或登录密码不正确，请重新输入!";
@@ -130,7 +134,7 @@
 		float:right;
 	}
 	div#footer {
-		width: 200px;
+		width: 280px;
 		margin:0px auto;
 		text-align:center;
 	}
