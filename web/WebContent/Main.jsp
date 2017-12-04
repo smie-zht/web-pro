@@ -56,7 +56,6 @@
                 <span><img class="slide" src="./RES/slide3.jpg" height="180" width="1024"/></span>
          </div>
     </div>
-    
 </header>
 </body>
 </html>
