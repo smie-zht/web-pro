@@ -16,7 +16,7 @@
 		String op1=request.getParameter("op");
 		if(op1==null||op1.isEmpty())
 		{
-			op1="all";
+			op1="全部";
 			System.out.print(op1);
 		}
 		if(cout1!=null&&!cout1.isEmpty())
@@ -69,7 +69,7 @@
 			  con.close();
 			}
 			else if(request.getMethod().equalsIgnoreCase("get")){
-				if(op1.equals("all"))
+				if(op1.equals("全部"))
 				{		System.out.print(cout+"aaaaaaaaaa");
 						String sql=String.format("select book_id,book_image,round(avg(book_point),1) as point,book_info.book_name,book_author from book_info,book_point where book_point.book_name=book_info.book_name"
 				 					+" group by book_info.book_name limit %d,%d",pgno*pgcnt,pgcnt);
@@ -286,7 +286,7 @@
 		<div id="left">
 			<span class="fenlei">分类：</span>
 			<ul class="leftlist">
-				<li><a href=Main.jsp?op=all&cout=0>全部</a></li>
+				<li><a href=Main.jsp?op=全部&cout=0>全部</a></li>
 				<li><a href=Main.jsp?op=言情&cout=0>言情</a></li>
 				<li><a href=Main.jsp?op=惊悚&cout=0>惊悚</a></li>
 				<li><a href=Main.jsp?op=校园&cout=0>校园</a></li>
@@ -298,7 +298,7 @@
 			</ul>
 		</div>
 		<div class="mainbody">
-		<div id="type"><a>全部</a></div>
+		<div id="type"><a><%=op1 %></a></div>
 			
 			<ul class="booklist">
 			<%=list %>
