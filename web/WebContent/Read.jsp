@@ -31,7 +31,6 @@
  	String user="user"; 
  	String pwd="123";
  
-	 String bid=request.getParameter("bookid");  
 	 String bk_dir="";//book direction in SQL 
 	 String bk_name=""; //book name in SQL
 	 String a_name="";//author name in SQL
@@ -41,6 +40,21 @@
 	 Class.forName("com.mysql.jdbc.Driver");
 	 Connection con = DriverManager.getConnection(connectString,user, pwd); 
 	 Statement stmt = con.createStatement(); 
+	 //获取bookid
+	 String bid=request.getParameter("bookid");  
+	 if(bid == null){
+		 String bnam = request.getParameter("bookName");
+		 try{
+			String sql2 = "select * from book_info where book_name = '"+bnam+"'";
+			ResultSet rs=stmt.executeQuery(sql2);
+			if(rs.next()){
+				 //out.print("查询成功！");
+				bid = rs.getString("book_id");
+			 }
+		 }catch(Exception e){ msg = e.getMessage(); } 
+			 
+	 }
+	 
 	 try{ 
 		 //处理转义字符
 		 String sql = "select * from book_info where book_id = '"+bid+"'" ; 
