@@ -8,6 +8,7 @@
 	String msg = "";
 	String username = "";
 	String password = ""; 
+	int user_id=-1;
 	String connectString = "jdbc:mysql://172.18.187.234:53306/boke15352405"
 					+ "?autoReconnect=true&useUnicode=true"
 					+ "&characterEncoding=UTF-8"; 
@@ -28,14 +29,17 @@
 				ResultSet rs=stmt.executeQuery(sql);
 				if(rs.next()){
 					if(rs.getInt("user_able")==1) {
-						Cookie cookie = new Cookie("shuchongname",URLEncoder.encode(username, "UTF-8")); 
-						
-						cookie.setMaxAge(3600);//设置保留时间 3600秒。
+						user_id=rs.getInt("user_id");
+						Cookie cookie1 = new Cookie("scuname",URLEncoder.encode(username, "UTF-8")); 
+						Cookie cookie2 = new Cookie("scuid",String.valueOf(user_id));
+						cookie1.setMaxAge(5000);//设置保留时间 5000秒。
 						//设置为负值表示只保存在内存(与未设置时间相同)，
 						// 关闭浏览器则消失。
 						// 设置为0表示要删除该cookie。
-						cookie.setPath("/"); //设置路径。未设置路径使用当前路径。
-						response.addCookie(cookie);
+						cookie2.setPath("/"); 
+						cookie1.setPath("/"); //设置路径。未设置路径使用当前路径。
+						response.addCookie(cookie2);
+						response.addCookie(cookie1);
 						msg="登录成功,返回主页开始阅读吧!";
 					}
 					else {
