@@ -2,13 +2,38 @@
          contentType="text/html; charset=utf-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
-	String path = request.getContextPath();
-	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+//	String path = request.getContextPath();
+//	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 	String systemmsg = "";
 	String msg = "";
 	String username = "";
 	String password = ""; 
 	int user_id=-1;
+	
+	
+	
+	//得到cookie
+	Cookie[] cookies = request.getCookies();
+	int ifLogin=0;
+	String loutname="";
+	String tmpname="";
+	
+	for(int i=cookies.length-1; i>=0; i--) {
+		int ifbreak=0;
+	  // 获得具体的Cookie
+		Cookie cookie = cookies[i];
+	  // 获得Cookie的名称
+		String cookien = cookie.getName();
+	  //out.print("Cookie名:"+name+" &nbsp; Cookie值:"+value+"<br>");
+		if(cookien.equals("scuname")){
+			ifLogin=1;
+			msg="您已登录!返回主页开始阅读吧!";
+			break;
+	  	}
+	}
+	  
+	
+	
 	String connectString = "jdbc:mysql://172.18.187.234:53306/boke15352405"
 					+ "?autoReconnect=true&useUnicode=true"
 					+ "&characterEncoding=UTF-8"; 
@@ -41,6 +66,7 @@
 						response.addCookie(cookie2);
 						response.addCookie(cookie1);
 						msg="登录成功,返回主页开始阅读吧!";
+						ifLogin=1;
 					}
 					else {
 						msg="您的账号被关小黑屋啦，请联系管理员!";
@@ -92,7 +118,7 @@
 <!DOCTYPE>
 <html  lang="zh-cn">
 <head>
-  <base href="<%=basePath%>">
+  
   <meta charset="utf-8">
   <title>欢迎来到书虫网</title>
   <link rel="stylesheet" type="text/css" href="./Font-Awesome/css/font-awesome.css" />
@@ -100,7 +126,7 @@
 	div#lr {
 		width:200px;
 		height: 120px;
-		background:linear-gradient(to right,rgb(180,255,180) 0%,rgb(180,240,180) 100%);
+		background:linear-gradient(to right,rgb(51,204,255) 0%,rgb(51,255,255) 100%);
 		border: 1px solid gray;
 		border-radius: 5px;
 		margin:20px auto;
@@ -116,7 +142,7 @@
 		width: 160px;
 		height: 1.5em;
 		margin: 2px;
-		background:linear-gradient(to right,rgb(180,252,180) 0%,rgb(180,242,180) 100%);
+		background:rgb(51,255,255);
 		border-radius: 6px;
 		border: 1px;
 		box-shadow: 1px 1px 3px #505050;
@@ -147,6 +173,7 @@
 </head>
 <body>
 	
+	<div class="container" style="<%=ifLogin==1?"display:none;":"" %>>">
 	<form   action="LR.jsp" method="post">
 	<div id="lr">
 	<p id="user">
@@ -165,7 +192,7 @@
 	</div>
 	<div id="clear"></div>
 	</form>
-	
+	</div>
 	<div id="footer">
 	<%=msg %><br/><br/>
 	<a href='Main.jsp'>返回主页</a>	

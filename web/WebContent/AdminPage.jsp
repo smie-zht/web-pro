@@ -1,22 +1,25 @@
 <%@ page language="java" import="java.util.*,java.sql.*,java.net.URLEncoder,java.net.URLDecoder" 
          contentType="text/html; charset=utf-8"%>
-<%
+<%	
 	request.setCharacterEncoding("utf-8");
+
+
+
+	String username="";	
 	Cookie[] cookies = request.getCookies();
 	int ifAdmin=0;
 	for(int i=cookies.length-1; i>=0; i--) {
-    	// 获得具体的Cookie
-    	Cookie cookie = cookies[i];
-    	// 获得Cookie的名称
-    	String cookien = cookie.getName();
-    	//out.print("Cookie名:"+name+" &nbsp; Cookie值:"+value+"<br>");
-   		if(cookien.equals("scuname")){
-    		String uname= URLDecoder.decode(cookie.getValue(), "UTF-8");
-    		if(uname.equals("Admin")) ifAdmin=1;
-    		
-    		break;
-    	}
- 	}
+	    // 获得具体的Cookie
+	    Cookie cookie = cookies[i];
+	    // 获得Cookie的名称
+	    String cookien = cookie.getName();
+	    //out.print("Cookie名:"+name+" &nbsp; Cookie值:"+value+"<br>");
+	    if(cookien.equals("scuname")){
+	    	String uname= URLDecoder.decode(cookie.getValue(), "UTF-8");
+	    	if(uname.equals("Admin")) ifAdmin=1;
+	    	break;
+	    }
+	 }
 	String mode="1";//mode=1,用户;mode=2,
 	String msg="";
 	int setmode=1;
@@ -28,7 +31,19 @@
 	} catch (Exception e){
 		msg = e.getMessage();
 	}
-
+/*	if(request.getMethod().equalsIgnoreCase("post")){
+		if(request.getParameter("logout")!=null){
+			for(int i=0;i<cookies.length;i++){
+				String cookien = cookies[i].getName();
+				if(cookien.equals("scuname")||cookien.equals("scuid")){
+			    	cookies[i].setMaxAge(0);
+			    	cookies[i].setPath("/");
+			    	response.addCookie(cookies[i]); 
+			    	System.out.print("logoutla");
+				}
+			}  
+		}
+	}*/
 
 
 %>
@@ -77,6 +92,9 @@
 	}
   a.mode {
   	padding:5px;
+  }
+  input.logout {
+  	border:none;background:none;cursor:pointer;color:blue;
   }
 </style>
 </head>
