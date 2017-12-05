@@ -17,26 +17,28 @@
 	int ifLogin=0;
 	String loutname="";
 	String tmpname="";
-	
-	for(int i=cookies.length-1; i>=0; i--) {
-		int ifbreak=0;
-	  // 获得具体的Cookie
-		Cookie cookie = cookies[i];
-	  // 获得Cookie的名称
-		String cookien = cookie.getName();
-	  //out.print("Cookie名:"+name+" &nbsp; Cookie值:"+value+"<br>");
-		if(cookien.equals("scuname")){
-			ifLogin=1;
-			msg="您已登录!返回主页开始阅读吧!";
-			break;
-	  	}
+	if(cookies!=null){
+		for(int i=cookies.length-1; i>=0; i--) {
+			int ifbreak=0;
+		  // 获得具体的Cookie
+			Cookie cookie = cookies[i];
+		  // 获得Cookie的名称
+			String cookien = cookie.getName();
+		  //out.print("Cookie名:"+name+" &nbsp; Cookie值:"+value+"<br>");
+			if(cookien.equals("scuname")){
+				ifLogin=1;
+				msg="您已登录!返回主页开始阅读吧!";
+				break;
+		  	}
+		}
 	}
+	
 	  
 	
 	
 	String connectString = "jdbc:mysql://172.18.187.234:53306/boke15352405"
 					+ "?autoReconnect=true&useUnicode=true"
-					+ "&characterEncoding=UTF-8"; 
+					+ "&characterEncoding=UTF-8&userSSL=false"; 
     StringBuilder table=new StringBuilder("");
     
 	try{

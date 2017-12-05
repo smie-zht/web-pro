@@ -3,16 +3,19 @@
 <%		
 		Cookie[] cookies = request.getCookies();
 		int identity=0;//0游客，1一般用户，2Admin
-		for(int i=cookies.length-1; i>=0; i--) {
-    		Cookie cookie = cookies[i];
-    		String cookien = cookie.getName();
-    		if(cookien.equals("scuname")){
-    			String uname= URLDecoder.decode(cookie.getValue(), "UTF-8");
-    			identity=1;
-    			if(uname.equals("Admin")) identity=2;
-    			break;
-    		}
- 		}
+		if(cookies!=null){
+			for(int i=cookies.length-1; i>=0; i--) {
+	    		Cookie cookie = cookies[i];
+	    		String cookien = cookie.getName();
+	    		if(cookien.equals("scuname")){
+	    			String uname= URLDecoder.decode(cookie.getValue(), "UTF-8");
+	    			identity=1;
+	    			if(uname.equals("Admin")) identity=2;
+	    			break;
+	    		}
+	 		}
+		}
+		
 		
 		Integer cout=0; 
 		request.setCharacterEncoding("utf-8");
@@ -87,7 +90,7 @@
 			}
 			else if(request.getMethod().equalsIgnoreCase("get")){
 				if(op1.equals("qb"))
-				{		
+				{	op2="全部";	
 						String sql=String.format("select book_id,book_image,round(avg(book_point),1) as point,book_info.book_name,book_author from book_info,book_point where book_point.book_name=book_info.book_name"
 				 					+" group by book_info.book_name limit %d,%d",pgno*pgcnt,pgcnt);
 						ResultSet rs=stmt.executeQuery(sql);
@@ -298,6 +301,7 @@ function show3(){
 			height:80px;
 			background:rgba(174,143,038,0.5);
 			border:1px solid black;
+			min-width:980px;
 		}
 		.input_top{
 			float:right;
@@ -313,6 +317,7 @@ function show3(){
 			border : 1px solid black;
 			text-align:right;
 			height:20px;
+			min-width:980px;
 			margin: 0 auto;
             position:relative;
             background:rgba(174,143,038,1);
@@ -434,7 +439,7 @@ function show3(){
 			width:940px;
 			height:312px;
 			position:absolute;
-			top:55px;
+			top:45px;
 			left:0px;
 		}
 		#tj,#zx,#hp{

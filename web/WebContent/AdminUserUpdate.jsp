@@ -14,18 +14,21 @@ int ifnormal=-1;
 //得到cookie
 Cookie[] cookies = request.getCookies();
 int ifAdmin=0;
-for(int i=cookies.length-1; i>=0; i--) {
-  // 获得具体的Cookie
-  Cookie cookie = cookies[i];
-  // 获得Cookie的名称
-  String cookien = cookie.getName();
-  //out.print("Cookie名:"+name+" &nbsp; Cookie值:"+value+"<br>");
-  if(cookien.equals("scuname")){
-  	String uname= URLDecoder.decode(cookie.getValue(), "UTF-8");
-  	if(uname.equals("Admin")) ifAdmin=1;
-  	break;
-  }
+if(cookies!=null){
+	for(int i=cookies.length-1; i>=0; i--) {
+		  // 获得具体的Cookie
+		  Cookie cookie = cookies[i];
+		  // 获得Cookie的名称
+		  String cookien = cookie.getName();
+		  //out.print("Cookie名:"+name+" &nbsp; Cookie值:"+value+"<br>");
+		  if(cookien.equals("scuname")){
+		  	String uname= URLDecoder.decode(cookie.getValue(), "UTF-8");
+		  	if(uname.equals("Admin")) ifAdmin=1;
+		  	break;
+		  }
+		}
 }
+
 //从上一个文件得到url参数
 if(ifAdmin==1){
 	try{
