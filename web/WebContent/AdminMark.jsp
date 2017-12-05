@@ -21,7 +21,7 @@
 	String msg ="";
 	String word ="";
 	Integer pgno = 0; //当前页号
-	Integer pgcnt = 15;  //每页行数
+	Integer pgcnt = 12;  //每页行数
 	String param = request.getParameter("pgno");
 	if(param != null && !param.isEmpty()){
 	pgno = Integer.parseInt(param);
