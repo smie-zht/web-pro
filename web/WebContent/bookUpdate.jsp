@@ -131,14 +131,14 @@ String connectString = "jdbc:mysql://172.18.187.234:53306/boke15352405"
 	 	作者:<input id="aname" type="text" name="aname">
 	 	<br></br>
 	 	类型:
-	 	<input id="type" type="radio" name="type" value="儿童"/>言情
-	 	<input id="type" type="radio" name="type" value="校园"/>惊悚
-	 	<input id="type" type="radio" name="type" value="都市"/>校园
+	 	<input id="type" type="radio" name="type" value="言情"/>言情
+	 	<input id="type" type="radio" name="type" value="惊悚"/>惊悚
+	 	<input id="type" type="radio" name="type" value="校园"/>校园
 	 	<br/>
-	 	<input id="type" type="radio" name="type" value="儿童"/>经典
-	 	<input id="type" type="radio" name="type" value="校园"/>儿童
-	 	<input id="type" type="radio" name="type" value="都市"/>科学
-	 	<input id="type" type="radio" name="type" value="儿童"/>历史
+	 	<input id="type" type="radio" name="type" value="经典"/>经典
+	 	<input id="type" type="radio" name="type" value="儿童"/>儿童
+	 	<input id="type" type="radio" name="type" value="科学"/>科学
+	 	<input id="type" type="radio" name="type" value="历史"/>历史
 	 	<br></br>
 	 	简介:<input id="introduce" type="text" name="introduce">
 	 	<br></br>
