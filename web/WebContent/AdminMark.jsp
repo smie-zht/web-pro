@@ -69,7 +69,7 @@
 			  if (selected != null && selected.length != 0) {
 				  for(int i=0;i<selected.length;i++){
 				      String fmt="delete from book_point where mark_id=%s";
-				      String sql = String.format(fmt,selected[0]);
+				      String sql = String.format(fmt,selected[i]);
 				      int cnt = stmt.executeUpdate(sql);
 				      if(cnt>0)	msg = "成功清理评分!";
 				      
