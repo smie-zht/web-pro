@@ -267,7 +267,7 @@
 			    	cookies[i].setMaxAge(0);
 			    	cookies[i].setPath("/");
 			    	response.addCookie(cookies[i]); 
-			    	System.out.print("logoutla");
+			    	
 				}
 			}  
 		}
@@ -528,6 +528,16 @@ function show3(){
         	right:50px;
         	top:5px;
         }
+        .user>a.up {
+        	position:absolute;
+        	right:50px;
+        	top:5px;
+        }
+        .user>a.ap {
+        	position:absolute;
+        	right:90px;
+        	top:5px;
+        }
 </style>
 <body>
 	<header id="header" >
@@ -539,7 +549,8 @@ function show3(){
 					<form action="Main.jsp" method="post">
 					<input type="submit" name="logout" class="logout" value="退出" />
 					</form>
-					<a href="<%=identity==1?"UserPage.jsp":"AdminPage.jsp" %>">主页</a>
+					<a href="UserPage.jsp" class="up" style="<%=identity!=0?"":"display:none;"%>">主页</a>
+					<a href="AdminPage.jsp" class="ap" style="<%=identity==2?"":"display:none;"%>">管理</a>
 			</div>
 			
 		</header>
