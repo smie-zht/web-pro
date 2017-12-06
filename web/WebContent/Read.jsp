@@ -76,13 +76,19 @@
 			if(getPoint!=null&&!getPoint.isEmpty())
 			{
 				point=Float.parseFloat(getPoint);
-				 try{ 
-					 String sql1 = "insert into book_point (book_name,book_point,user_id) values('"+bk_name+"','"+getPoint+"','"+String.valueOf(userId)+"')"; 
-					 int cnt = stmt.executeUpdate(sql1); 
-					 if(cnt>0){
-						 out.print("评分上传成功!"); 
-					 }
-					}catch (Exception e){ msg = e.getMessage(); } 
+				if(point>=0&&point<=10){
+					try{ 
+						 String sql1 = "insert into book_point (book_name,book_point,user_id) values('"+bk_name+"','"+getPoint+"','"+String.valueOf(userId)+"')"; 
+						 int cnt = stmt.executeUpdate(sql1); 
+						 if(cnt>0){
+							 out.print("评分上传成功!"); 
+						 }
+						}catch (Exception e){ msg = e.getMessage(); } 
+				}
+				else{
+					out.print("评分无效!"); 
+				}
+ 
 			}
 		 stmt.close(); 
 		 con.close(); 

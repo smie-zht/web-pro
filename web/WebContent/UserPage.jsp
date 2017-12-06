@@ -69,27 +69,93 @@
 <head>
 	<title>用户主页</title>
 	 <style> a:link,a:visited {color:blue;} 
+	body{
+		    font-family: Arial,sans-serif;
+            color: #000000;
+            font-size: 12px;
+            margin: 0px;
+            padding: 0px;
+            background:url("./RES/xiangrikui.JPG");
+            background-size: cover;
+		}
 	table{border-collapse: collapse; border: none; width: 500px;
-			margin:0px auto;} 
+			text-align:center;margin:0px auto;} 
 	td,th{border: solid grey 1px;margin: 0 0 0 0; padding: 5px 5px 5px 5px}
-	.container{	border:1px solid red;  
-	margin:0 auto;width:960px;text-align:center;} 
+	.container{	border:1px solid rgba(255,255,204,0.02);  
 	
+	margin:0 auto;width:960px;} 
+	#table{height:210px;margin-left:80px;font-size:18px;
+	background-color:rgba(255,255,204,0.01);
+	width:570px;font-family:楷体;}
+	#page{margin:10px 225px;
+	}
+	.footer{
+			background:rgba(117,157,48,0.01);
+			text-align:center;
+			border:1px solid rgba(117,157,48,0.01);
+			width:980px;
+			height:60px;
+			margin-left:100px;
+			margin-right:auto;
+		}
+	header{
+			
+			border:1px solid rgba(117,157,48,0.01);
+			width:980px;
+			height:60px;
+			margin-left:auto;
+			margin-right:auto;
+		}
+	#h-text{
+		padding:20px;
+		text-align:center;
+		float:right;
+		margin-right:100px;
+		font-family:楷体;
+		font-size:25px;
+		color: yellow; 
+	}
+	#user{
+		height:200px;
+		width:750px;
+		margin:10px auto;
+		padding:10px;
+		border:1px solid green;
+	}
+	#user_img{
+		height:170px;
+		width:170px;
+		margin:8px 30px;
+		border:2px solid white;
+		background:url("./RES/user_img.jpg");
+	}
 	 </style> 
 </head>
 	<body><%request.setCharacterEncoding("utf-8");%>
+	 <header id="header">
+		<img src="./RES/logo.png" alt="1">
+		<div id="h-text">只做最好的在线图书阅读网站</div>
+	</header>
 	 <div class="container"> 
 	 	<div></div>
-	 	<h1><%=userName %>的主页</h1> 
+	 	<h1>&nbsp;&nbsp;&nbsp;&nbsp;<%=userName %>的主页</h1> 
+	 	<div id ="user">
+	 		<div id="user_img"></div>
+	 	</div>
+	 	<div id = "table">
+	 	评分/上传作品：
 	 	<%=table%> 
-	 	<br></br>
-	<div id="page">
+	 	<div id="page">
 		<a href="UserPage.jsp?pgno=<%=pgprev %>&pgcnt=<%=pgcnt %>">上一页</a>
 		<a href="UserPage.jsp?pgno=<%=pgnext %>&pgcnt=<%=pgcnt %>">下一页</a>
-	</div>
-		<br></br>		
+		</div>
+	 	</div>	
+	 	<br></br>
 		<%=msg %>
-		<br><a href='Main.jsp'>返回</a> 
+		<br><a href='Main.jsp'>返回书虫网</a> 
 	 </div>
-
+	 <footer id="footer">
+		<div class="footer"><img src="./RES/logo.png" alt="1"></div>
+	</footer>
+	</body>
 </html>
