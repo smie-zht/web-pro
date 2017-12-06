@@ -101,11 +101,16 @@
 <head>
 	<title>阅读图书</title>
 	 <style> 
+	 	body{
+	 		background:url("./RES/background.jpg");
+            background-size: cover;
+	 	}
 	 	a:link,a:visited {color:blue;} 
 	 	.container{  
 	 		margin:0 auto;
 	 		width:980px;
 	 		text-align:center;
+	 		
 	 	} 
 	 	#user{
 	 		width:100px;
@@ -115,11 +120,12 @@
 	 		font-size:20px;
 	 	}
 		#content{
-			border:1px  solid red;
+			border:2px  solid grey;
 			width:960px;
 			height:680px;
 			margin:0px auto;
 			padding: 20px;
+			background-color:rgba(255,255,255,0.8);
 		}
 		.goBack{
 			height:20px;
@@ -132,7 +138,7 @@
 		#book{
 			overflow:scroll;
 			margin:10px;
-			border:1px  solid green;
+			background-color:rgba(100,100,100,0.25);
 			width:900px;
 			height:480px;
 			margin:0px auto;
