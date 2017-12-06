@@ -131,15 +131,13 @@
 		background:linear-gradient(to right,rgb(51,204,255) 0%,rgb(51,255,255) 100%);
 		border: 1px solid gray;
 		border-radius: 5px;
-		margin:20px auto;
+		margin:60px auto ;
 		padding-top:5px;
 		padding-left:30px;
 		padding-right:20px;
 		box-shadow: inset 2px 2px 1px rgba(0,0,0,0.2),4px 4px 3px rgba(0,0,0,0.2);
 	}
-	i {
-		
-	}
+	
 	p>input {
 		width: 160px;
 		height: 1.5em;
@@ -165,40 +163,106 @@
 	input#register {
 		float:right;
 	}
-	div#footer {
-		width: 280px;
-		margin:0px auto;
+	div#btm {
+		position:absolute;
+		top:350px;
+		left: 240px;
+		width: 500px;
+		text-align:center;
+		font-size:16px;
+	}
+	.header2{
+		margin:0 auto;
+		width:100%;
+		height:80px;
+		background:rgba(174,143,038,0.5);
+		border:1px solid black;
+		min-width:980px;
+	}
+	#header{
+		border : 1px solid black;
+		text-align:right;
+		width:100%;
+		height:20px;
+		min-width:980px;
+		margin: 0 auto;
+        position:relative;
+        background:rgba(174,143,038,1);
+        border-bottom:none;
+    }
+	body{
+		    
+        color: #000000;
+        font-size: 12px;
+        margin: 0px;
+        padding: 0px;
+        background:url("./RES/background.jpg");
+        background-size: cover;
+	}
+	.main {
+		position:relative;
+		width:980px;
+		height:520px;
+		background:rgba(247,238,214,0.8);
+		margin:0 auto;
+		
+		border:1px solid rgba(51,0,0,0.8);
+		border-top:1px solid transparent;
+		border-bottom:1px solid rgba(51,0,0,0.4);
+	}
+	#ft{
+		height:30px;
+		line-height:30px;
+		border : 1px solid gray;
+		background:rgba(0,204,102,0.8);
+		margin:0px auto 0 auto;
 		text-align:center;
 	}
-	
+	.navbar_img{  
+	    margin:10px auto;   
+	    width:980px;  
+	    text-align:center;  
+  	} 
   </style>
 </head>
 <body>
-	
-	<div class="container" style="<%=ifLogin==1?"display:none;":"" %>>">
-	<form   action="LR.jsp" method="post">
-	<div id="lr">
-	<p id="user">
-		<i id="u" class="fa fa-user-circle" aria-hidden="true"></i>
-		<input type="text"  name="username" placeholder="用户名" value="<%=username %>"/>
+	<header id="header" ></header>
 		
-	</p>
-	<p id="pass">
-		<i id="p" class="fa fa-key" aria-hidden="true" ></i>
-		<input type="password" name="password" placeholder="密码"/>
-	</p>
+	<div class="header2" >
+		<div class="navbar_img">
+			<img src="./RES/logo.png" alt="1">
+		</div>	
 	</div>
-	<div id="btn">
-	<input id="login" type="submit" name="login" value="登录"/>
-	<input id="register" type="submit" name="register" value="注册"/>
+	<div class="main"> 
+		<div class="container" style="<%=ifLogin==1?"visibility:hidden;":"" %>>">
+		<form   action="LR.jsp" method="post">
+		<div id="lr">
+		<p id="user">
+			<i id="u" class="fa fa-user-circle" aria-hidden="true"></i>
+			<input type="text"  name="username" placeholder="用户名" value="<%=username %>"/>
+			
+		</p>
+		<p id="pass">
+			<i id="p" class="fa fa-key" aria-hidden="true" ></i>
+			<input type="password" name="password" placeholder="密码"/>
+		</p>
+		</div>
+		<div id="btn">
+		<input id="login" type="submit" name="login" value="登录"/>
+		<input id="register" type="submit" name="register" value="注册"/>
+		</div>
+		<div id="clear"></div>
+		</form>
+		</div>
+		<div id="btm">
+		<%=msg %><br/><br/>
+		<a href='Main.jsp'>返回主页</a><br/><br/>
+		</div>
+	
 	</div>
-	<div id="clear"></div>
-	</form>
-	</div>
-	<div id="footer">
-	<%=msg %><br/><br/>
-	<a href='Main.jsp'>返回主页</a>	
-	</div>
+	<footer id="ft">
+		<div class="footer"><span>专注在线阅读的图书网站</span></div>
+	</footer>
 	
 </body>
 </html>

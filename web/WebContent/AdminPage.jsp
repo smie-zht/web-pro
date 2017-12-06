@@ -77,8 +77,9 @@
   
   .container{  
     margin:0 auto;   
-    width:1000px;  
+    width:980px;  
     text-align:center;  
+    font-size:16px;
   }  
   p {text-align:left;  }
   .frameset {
@@ -99,27 +100,94 @@
   input.logout {
   	border:none;background:none;cursor:pointer;color:blue;
   }
+  .header2{
+		margin:0 auto;
+		width:100%;
+		height:80px;
+		background:rgba(174,143,038,0.5);
+		border:1px solid black;
+		min-width:980px;
+	}
+	#header{
+		border : 1px solid black;
+		text-align:right;
+		width:100%;
+		height:20px;
+		min-width:980px;
+		margin: 0 auto;
+        position:relative;
+        background:rgba(174,143,038,1);
+        border-bottom:none;
+    }
+  body{
+		    
+        color: #000000;
+        font-size: 12px;
+        margin: 0px;
+        padding: 0px;
+        background:url("./RES/background.jpg");
+        background-size: cover;
+	}
+  .main {
+		position:relative;
+		width:980px;
+		height:860px;
+		background:rgba(247,238,214,0.8);
+		margin:0 auto;
+		
+		border:1px solid rgba(51,0,0,0.8);
+		border-top:1px solid transparent;
+		border-bottom:1px solid rgba(51,0,0,0.4);
+	}
+	#ft{
+		height:30px;
+		line-height:30px;
+		border : 1px solid gray;
+		background:rgba(0,204,102,0.8);
+		margin:0px auto 0 auto;
+		text-align:center;
+	}
+	.navbar_img{  
+	    margin:10px auto;   
+	    width:980px;  
+	    text-align:center;  
+  	}  
 </style>
 </head>
 <body>
-   <div class="container" style="<%=ifAdmin==1?"display:none;":"" %>>">
-   <br/><br/><h2>这位同学你走错片场啦</h2><br/><br/>
-   <a href='Main.jsp'>返回主页</a>
-   </div>
-  <div class="container" style="<%=ifAdmin!=1?"display:none;":"" %>>">
-  	  <h1>管理者模式</h1>
-  	  <br/>
-  	  <a class="mode" href='AdminPage.jsp?mode=1' style="<%=setmode==1?"border:2px dashed black;":""%>">管理用户</a>&nbsp; &nbsp; 
-  	  &nbsp; &nbsp; 
-  	  <a class="mode" href='AdminPage.jsp?mode=2' style="<%=setmode==2?"border:2px dashed black;":""%>">管理评价</a>
-  	  <br/>
-  	  <div class="frameset">
-  	  <iframe class="frame" src="AdminUser.jsp" style="<%=setmode!=1?"display:none;":""%>"></iframe>
-	  <iframe class="frame" src="AdminMark.jsp" style="<%=setmode!=2?"display:none;":""%>"></iframe>
-  	  </div>
-	  
-	  <a href='Main.jsp?'>返回主页</a>
-  </div>
+	<header id="header" ></header>
+		
+	<div class="header2" >
+		<div class="navbar_img">
+			<img src="./RES/logo.png" alt="1">
+		</div>
+			
+		
+	</div>
+	<div class="main"> 
+	   <div class="container" style="<%=ifAdmin==1?"display:none;":"" %>>">
+	   <br/><br/><h2>这位同学你走错片场啦</h2><br/><br/>
+	   <a href='Main.jsp'>返回主页</a>
+	   </div>
+	  	<div class="container" style="<%=ifAdmin!=1?"display:none;":"" %>>">
+	  	  <h1>管理者模式</h1>
+	  	  <br/>
+	  	  <a class="mode" href='AdminPage.jsp?mode=1' style="<%=setmode==1?"border:2px dashed black;":""%>">管理用户</a>&nbsp; &nbsp; 
+	  	  &nbsp; &nbsp; 
+	  	  <a class="mode" href='AdminPage.jsp?mode=2' style="<%=setmode==2?"border:2px dashed black;":""%>">管理评价</a>
+	  	  <br/>
+	  	  <div class="frameset">
+	  	  <iframe class="frame" src="AdminUser.jsp" style="<%=setmode!=1?"display:none;":""%>"></iframe>
+		  <iframe class="frame" src="AdminMark.jsp" style="<%=setmode!=2?"display:none;":""%>"></iframe>
+	  	  </div>
+		  
+		  <a href='Main.jsp?'>返回主页</a>
+	  </div>
+	</div>
+	<footer id="ft">
+		<div class="footer"><span>专注在线阅读的图书网站</span></div>
+	</footer>
+
   
 </body>
 </html>
