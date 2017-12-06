@@ -82,11 +82,39 @@
 			text-align:center;margin:0px auto;} 
 	td,th{border: solid grey 1px;margin: 0 0 0 0; padding: 5px 5px 5px 5px}
 	.container{	border:1px solid rgba(255,255,204,0.02);  
-	
-	margin:0 auto;width:960px;} 
-	#table{height:210px;margin-left:80px;font-size:18px;
-	background-color:rgba(255,255,204,0.01);
+	background-color:rgba(255,190,70,0.55);
+	margin:0 auto;width:960px;height:600px;} 
+	#table{
+	float:right;
+	margin-right:90px;
+	border:1px solid yellow;
+	height:210px;font-size:18px;
+	background-color:rgba(255,190,30,0.60);
+	padding-top:10px;
+	padding-bottom:10px;
 	width:570px;font-family:楷体;}
+	#action{
+	float:left;
+	margin-left:90px;
+	height:210px;width:180px;
+	font-size:18px;
+	background-color:rgba(255,190,0,0.60);
+	position:relative;
+	font-family:楷体;
+	border:1px solid white;
+	padding:10px;
+	}
+	.act{
+		border:1px solid white;
+		background-color:rgba(255,150,1,0.8);
+		width:100px;
+		height:25px;
+		padding:auto;
+		margin:30px;
+		font-size:20px;
+		text-align:center;
+		border-radius:5px;
+	}
 	#page{margin:10px 225px;
 	}
 	.footer{
@@ -110,25 +138,38 @@
 		padding:20px;
 		text-align:center;
 		float:right;
-		margin-right:100px;
+		margin-right:40px;
 		font-family:楷体;
 		font-size:25px;
-		color: yellow; 
+		color: green; 
 	}
 	#user{
 		height:200px;
 		width:750px;
 		margin:10px auto;
 		padding:10px;
-		border:1px solid green;
+		border:1px solid white;
+		background-color:rgba(255,255,255,0.4);
 	}
 	#user_img{
+		float:left;
 		height:170px;
 		width:170px;
 		margin:8px 30px;
 		border:2px solid white;
 		background:url("./RES/user_img.jpg");
 	}
+	#user_word{
+		padding:30px;
+		float:left;
+		height:170px;
+		width:340px;
+		margin:8px 50px;
+		font-size:30px;
+		font-family:楷体;
+		texe-align:center;
+	}
+
 	 </style> 
 </head>
 	<body><%request.setCharacterEncoding("utf-8");%>
@@ -141,7 +182,15 @@
 	 	<h1>&nbsp;&nbsp;&nbsp;&nbsp;<%=userName %>的主页</h1> 
 	 	<div id ="user">
 	 		<div id="user_img"></div>
+	 		<div id="user_word">生活<br/><br/>是一次最深的阅读！</div>
 	 	</div>
+	 	
+	 	<div id="action">
+	 	用户操作：
+	 		<div class="act"><a href="bookUpdate.jsp">上传图书</a></div>
+	 		<div class="act"><a href="changeKey.jsp">修改密码</a></div>
+	 	</div>
+	 	
 	 	<div id = "table">
 	 	评分/上传作品：
 	 	<%=table%> 
@@ -150,6 +199,7 @@
 		<a href="UserPage.jsp?pgno=<%=pgnext %>&pgcnt=<%=pgcnt %>">下一页</a>
 		</div>
 	 	</div>	
+	 	<div style="clear:both;"></div>
 	 	<br></br>
 		<%=msg %>
 		<br><a href='Main.jsp'>返回书虫网</a> 

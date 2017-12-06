@@ -11,17 +11,20 @@
 	String userName = "未登录";
 	//获取cookid流
 	Cookie[] cookies = request.getCookies();
-	for(int i=0;i<cookies.length;i++){
-		Cookie cookie = cookies[i];
-		String cokName = cookie.getName();
-		if(cokName.equals("scuid")){
-			user_id = Integer.parseInt(cookie.getValue());
-			if(user_id==1) isAdmin = 1;
+	if(cookies!=null){
+		for(int i=0;i<cookies.length;i++){
+			Cookie cookie = cookies[i];
+			String cokName = cookie.getName();
+			if(cokName.equals("scuid")){
+				user_id = Integer.parseInt(cookie.getValue());
+				if(user_id==1) isAdmin = 1;
+			}
+			if(cokName.equals("scuname")){
+	    		userName = URLDecoder.decode(cookie.getValue(), "UTF-8");
+	    	}
 		}
-		if(cokName.equals("scuname")){
-    		userName = URLDecoder.decode(cookie.getValue(), "UTF-8");
-    	}
 	}
+	
 String msg = ""; 
 String connectString = "jdbc:mysql://172.18.187.234:53306/boke15352405"
 		+ "?autoReconnect=true&useUnicode=true"
@@ -102,9 +105,16 @@ String connectString = "jdbc:mysql://172.18.187.234:53306/boke15352405"
 <html>
 <head>
 	<title>上传图书</title>
+	
 	 <style> a:link,a:visited {color:blue;} 
-	.container{  margin:0 auto;width:500px;text-align:center;} 
+	 body{background:url("./RES/background.jpg");}
+	.container{
+			margin:100px auto;width:500px;text-align:center;
+			background-color:rgba(255,255,255,0.7);
+			border:2px solid white;
+			border-radius:2px;} 
 	#user{
+			
 	 		width:150px;height:40px;float:left;
 	 		font-family:楷体;font-size:20px;
 	 	}
@@ -112,6 +122,7 @@ String connectString = "jdbc:mysql://172.18.187.234:53306/boke15352405"
 </head>
 	<body><%request.setCharacterEncoding("utf-8");%>
 	<div id="user">当前用户：<%=userName %></div>
+	
 	 <div class="container"> 
 	 	<h1>用户上传图书</h1> 
 	 	<form action="bookUpdate.jsp" method="post" enctype="multipart/form-data">
