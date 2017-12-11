@@ -51,7 +51,7 @@
 			password = request.getParameter("password");
 			if(request.getParameter("login")!=null){
 				
-				String fmt="select * from user_info where user_name='%s' and user_password='%s'";
+				String fmt="select * from user_info where binary user_name='%s' and binary user_password='%s'";
 				String sql = String.format(fmt,username,password);
 				ResultSet rs=stmt.executeQuery(sql);
 				if(rs.next()){
