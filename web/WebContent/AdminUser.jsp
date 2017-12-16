@@ -10,7 +10,7 @@
 	        String cookien = cookie.getName();
 	        if(cookien.equals("scuname")){
 	        	String uname= URLDecoder.decode(cookie.getValue(), "UTF-8");
-	        	if(uname.equals("Admin")) ifAdmin=1;
+	        	if(uname.equals("admin")) ifAdmin=1;
 	        	break;
 	        }
 	     }
