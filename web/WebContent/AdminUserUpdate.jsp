@@ -62,9 +62,11 @@ if(ifAdmin==1){
 				status = request.getParameter("status");
 				if(status.equals("normal")) {
 					newsts="1";
+					ifnormal=1;
 				}
 				else if(status.equals("forbidden")) {
 					newsts="0";
+					ifnormal=0;
 				}
 				String fmt="update user_info set user_password='%s',user_able=%s where user_id=%s";
 				String sql = String.format(fmt,password,newsts,id);
