@@ -6,14 +6,11 @@
 	int ifAdmin=0;
 	if(cookies!=null) {
 		for(int i=cookies.length-1; i>=0; i--) {
-			// 获得具体的Cookie
 			Cookie cookie = cookies[i];
-			// 获得Cookie的名称
 			String cookien = cookie.getName();
-			//out.print("Cookie名:"+name+" &nbsp; Cookie值:"+value+"<br>");
 			if(cookien.equals("scuname")){
 				String uname= URLDecoder.decode(cookie.getValue(), "UTF-8");
-				if(uname.equals("Admin")) ifAdmin=1;	
+				if(uname.equals("admin")) ifAdmin=1;	
 				break;
 			}
 		}
@@ -75,7 +72,6 @@
 				      String sql = String.format(fmt,selected[i]);
 				      int cnt = stmt.executeUpdate(sql);
 				      if(cnt>0)	msg = "成功清理评分!";
-				      
 				  }
 			  }
 			  String sql=String.format("select * from book_point limit %d,%d",
@@ -90,7 +86,6 @@
 		            		   rs1.getInt("user_id")==0?"未注册用户":rs1.getInt("user_id"),
 		            			"<input type='checkbox' name='delete' value='"+rs1.getInt("mark_id")+"'>"
 		            		   ));
-		             			
 			  }
 			  table.append("</table>");
 			  rs1.close();

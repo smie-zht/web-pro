@@ -17,7 +17,7 @@
 		    //out.print("Cookie名:"+name+" &nbsp; Cookie值:"+value+"<br>");
 		    if(cookien.equals("scuname")){
 		    	String uname= URLDecoder.decode(cookie.getValue(), "UTF-8");
-		    	if(uname.equals("Admin")) ifAdmin=1;
+		    	if(uname.equals("admin")) ifAdmin=1;
 		    	break;
 		    }
 		 }
@@ -34,19 +34,7 @@
 	} catch (Exception e){
 		msg = e.getMessage();
 	}
-/*	if(request.getMethod().equalsIgnoreCase("post")){
-		if(request.getParameter("logout")!=null){
-			for(int i=0;i<cookies.length;i++){
-				String cookien = cookies[i].getName();
-				if(cookien.equals("scuname")||cookien.equals("scuid")){
-			    	cookies[i].setMaxAge(0);
-			    	cookies[i].setPath("/");
-			    	response.addCookie(cookies[i]); 
-			    	System.out.print("logoutla");
-				}
-			}  
-		}
-	}*/
+
 
 
 %>
@@ -156,13 +144,10 @@
 </head>
 <body>
 	<header id="header" ></header>
-		
 	<div class="header2" >
 		<div class="navbar_img">
 			<img src="./RES/logo.png" alt="1">
 		</div>
-			
-		
 	</div>
 	<div class="main"> 
 	   <div class="container" style="<%=ifAdmin==1?"display:none;":"" %>>">
@@ -172,22 +157,19 @@
 	  	<div class="container" style="<%=ifAdmin!=1?"display:none;":"" %>>">
 	  	  <h1>管理者模式</h1>
 	  	  <br/>
-	  	  <a class="mode" href='AdminPage.jsp?mode=1' style="<%=setmode==1?"border:2px dashed black;":""%>">管理用户</a>&nbsp; &nbsp; 
-	  	  &nbsp; &nbsp; 
+	  	  <a class="mode" href='AdminPage.jsp?mode=1' style="<%=setmode==1?"border:2px dashed black;":""%>">管理用户</a>
+	  	  &nbsp; &nbsp; &nbsp; &nbsp; 
 	  	  <a class="mode" href='AdminPage.jsp?mode=2' style="<%=setmode==2?"border:2px dashed black;":""%>">管理评价</a>
 	  	  <br/>
 	  	  <div class="frameset">
 	  	  <iframe class="frame" src="AdminUser.jsp" style="<%=setmode!=1?"display:none;":""%>"></iframe>
 		  <iframe class="frame" src="AdminMark.jsp" style="<%=setmode!=2?"display:none;":""%>"></iframe>
 	  	  </div>
-		  
 		  <a href='Main.jsp?'>返回主页</a>
 	  </div>
 	</div>
 	<footer id="ft">
 		<div class="footer"><span>专注在线阅读的图书网站</span></div>
 	</footer>
-
-  
 </body>
 </html>

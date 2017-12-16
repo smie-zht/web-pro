@@ -23,7 +23,7 @@ if(cookies!=null){
 		  //out.print("Cookie名:"+name+" &nbsp; Cookie值:"+value+"<br>");
 		  if(cookien.equals("scuname")){
 		  	String uname= URLDecoder.decode(cookie.getValue(), "UTF-8");
-		  	if(uname.equals("Admin")) ifAdmin=1;
+		  	if(uname.equals("admin")) ifAdmin=1;
 		  	break;
 		  }
 		}
@@ -62,9 +62,11 @@ if(ifAdmin==1){
 				status = request.getParameter("status");
 				if(status.equals("normal")) {
 					newsts="1";
+					ifnormal=1;
 				}
 				else if(status.equals("forbidden")) {
 					newsts="0";
+					ifnormal=0;
 				}
 				String fmt="update user_info set user_password='%s',user_able=%s where user_id=%s";
 				String sql = String.format(fmt,password,newsts,id);

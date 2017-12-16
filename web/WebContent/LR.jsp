@@ -24,7 +24,6 @@
 			Cookie cookie = cookies[i];
 		  // 获得Cookie的名称
 			String cookien = cookie.getName();
-		  //out.print("Cookie名:"+name+" &nbsp; Cookie值:"+value+"<br>");
 			if(cookien.equals("scuname")){
 				ifLogin=1;
 				msg="您已登录!返回主页开始阅读吧!";
@@ -32,15 +31,9 @@
 		  	}
 		}
 	}
-	
-	  
-	
-	
 	String connectString = "jdbc:mysql://172.18.187.234:53306/boke15352405"
 					+ "?autoReconnect=true&useUnicode=true"
 					+ "&characterEncoding=UTF-8&userSSL=false"; 
-    StringBuilder table=new StringBuilder("");
-    
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con=DriverManager.getConnection(connectString, 
@@ -50,7 +43,6 @@
 			username = request.getParameter("username");
 			password = request.getParameter("password");
 			if(request.getParameter("login")!=null){
-				
 				String fmt="select * from user_info where binary user_name='%s' and binary user_password='%s'";
 				String sql = String.format(fmt,username,password);
 				ResultSet rs=stmt.executeQuery(sql);
@@ -60,9 +52,6 @@
 						Cookie cookie1 = new Cookie("scuname",URLEncoder.encode(username, "UTF-8")); 
 						Cookie cookie2 = new Cookie("scuid",String.valueOf(user_id));
 						cookie1.setMaxAge(5000);//设置保留时间 5000秒。
-						//设置为负值表示只保存在内存(与未设置时间相同)，
-						// 关闭浏览器则消失。
-						// 设置为0表示要删除该cookie。
 						cookie2.setPath("/"); 
 						cookie1.setPath("/"); //设置路径。未设置路径使用当前路径。
 						response.addCookie(cookie2);
@@ -70,24 +59,22 @@
 						msg="登录成功,返回主页开始阅读吧!";
 						ifLogin=1;
 					}
-					else {
+					else 
 						msg="您的账号被关小黑屋啦，请联系管理员!";
-					}
 				}
-				else{
+				else
 					msg="帐户名或登录密码不正确，请重新输入!";
-				}
 				rs.close();
 			  }
 			else if(request.getParameter("register")!=null){
-				if(username.equals("")){
+				if(username.trim().equals("")){
 					msg="注册失败,用户名不能为空!";
 				}
-				else if(password.equals("")){
+				else if(password.trim().equals("")){
 					msg="注册失败，密码不能为空!";
 				}
 				else{
-					String fmt1="select * from user_info where user_name='%s'";
+					String fmt1="select * from user_info where binary user_name='%s'";
 					String sql1 = String.format(fmt1,username);
 					ResultSet rs1=stmt.executeQuery(sql1);
 					
@@ -113,8 +100,6 @@
 		catch (Exception e){
 		  systemmsg = e.getMessage();
 		}
-    
-	
 %> 
 
 <!DOCTYPE>

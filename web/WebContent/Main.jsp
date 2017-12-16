@@ -11,7 +11,7 @@
     		if(cookien.equals("scuname")){
 	   			String uname= URLDecoder.decode(cookie.getValue(), "UTF-8");
 	   			identity=1;
-	   			if(uname.equals("Admin")) identity=2;
+	   			if(uname.equals("admin")) identity=2;
 	   			break;
 	   		}
 		}
