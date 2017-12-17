@@ -65,10 +65,14 @@
 			 a_name = rs.getString("book_author");
 			 bk_name = rs.getString("book_name");
 			 bk_dir = rs.getString("book_url");
-			 Scanner scan = new Scanner(new FileInputStream(bk_dir));
+			// System.out.print(bk_dir);
+			 String filePath=this.getServletConfig().getServletContext().getRealPath("/"); 
+			 String dir = filePath+bk_dir;
+			 //System.out.print(dir);
+			 Scanner scan = new Scanner(new FileInputStream(dir));
 		      scan.useDelimiter("\n");
 		      while(scan.hasNext()){
-		          buffer.append(scan.next()).append("\n");
+		          buffer.append(scan.next()).append("<br/>");
 		      }
 		      scan.close();
 		 }
@@ -160,8 +164,21 @@
 	 	</div>
 	 	 <div>
 	 	 	<form action="Read.jsp?bookid=<%=bid %>" method="post" id="point">
-	 	 		<br/>喜欢这部作品，就为它打分吧！（0~10）
-	 	 		<input type=text name ="point" id = "point">
+	 	 		<br/>喜欢这部作品，就为它打分吧！
+	 	 		
+	 	 		<select name ="point">
+	 	 			<option value="0">0</option>
+  					<option value="1">1</option>
+  					<option value="2">2</option>
+  					<option value="3">3</option>
+  					<option value="4">4</option>
+  					<option value="5">5</option>
+  					<option value="6">6</option>
+  					<option value="7">7</option>
+  					<option value="8">8</option>
+  					<option value="9">9</option>
+  					<option value="10">10</option>
+				</select>
 	 	 		<input type="submit" value="评分">
 	 	 	</form>
 	 	 </div>

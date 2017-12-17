@@ -146,7 +146,7 @@
 	<header id="header" ></header>
 	<div class="header2" >
 		<div class="navbar_img">
-			<img src="./RES/logo.png" alt="1">
+			<a href="Main.jsp"><img src="./RES/logo.png" alt="1"></a>
 		</div>
 	</div>
 	<div class="main"> 

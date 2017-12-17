@@ -76,14 +76,17 @@
             margin: 0px;
             padding: 0px;
             background:url("./RES/xiangrikui.JPG");
-            background-size: cover;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-clip: padding-box;
 		}
 	table{border-collapse: collapse; border: none; width: 500px;
 			text-align:center;margin:0px auto;} 
 	td,th{border: solid grey 1px;margin: 0 0 0 0; padding: 5px 5px 5px 5px}
 	.container{	border:1px solid rgba(255,255,204,0.02);  
 	background-color:rgba(255,190,70,0.55);
-	margin:0 auto;width:960px;height:600px;} 
+	text-align:center;
+	margin:0 auto;width:980px;padding-bottom:20px;} 
 	#table{
 	float:right;
 	margin-right:90px;
@@ -122,13 +125,12 @@
 			text-align:center;
 			border:1px solid rgba(117,157,48,0.01);
 			width:980px;
-			height:60px;
+			height:40px;
 			margin-left:100px;
 			margin-right:auto;
 		}
 	header{
-			
-			border:1px solid rgba(117,157,48,0.01);
+			border:1px solid rgba(117,157,48,0.1);
 			width:980px;
 			height:60px;
 			margin-left:auto;
@@ -169,12 +171,15 @@
 		font-family:楷体;
 		texe-align:center;
 	}
+	.footer>img {
+		height:40px;
+	}
 
 	 </style> 
 </head>
 	<body><%request.setCharacterEncoding("utf-8");%>
 	 <header id="header">
-		<img src="./RES/logo.png" alt="1">
+		<a href="Main.jsp"><img src="./RES/logo.png" alt="1"></a>
 		<div id="h-text">只做最好的在线图书阅读网站</div>
 	</header>
 	 <div class="container"> 
@@ -200,9 +205,9 @@
 		</div>
 	 	</div>	
 	 	<div style="clear:both;"></div>
-	 	<br></br>
+	 	</br>
 		<%=msg %>
-		<br><a href='Main.jsp'>返回书虫网</a> 
+		<br><a href='Main.jsp' style="color:black;">返回书虫网</a>
 	 </div>
 	 <footer id="footer">
 		<div class="footer"><img src="./RES/logo.png" alt="1"></div>

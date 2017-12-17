@@ -64,9 +64,7 @@
 			if(request.getParameter("search")!=null) {
 				cout=1;
 			 	query1=query;
-			 	//String sql=String.format("select book_id,book_image,round(avg(book_point),1) as point,book_info.book_name,book_author from book_info,book_point where book_point.book_name=book_info.book_name "
-	 			//		+" and  book_info.book_name like '%%"+query+"%%' group by book_info.book_name limit %d,%d",pgno*pgcnt,pgcnt);
-			 	
+			 				 	
 			 	String sql = String.format("select * from book_info where book_name like '%%"+query+"%%' limit %d,%d",pgno*pgcnt,pgcnt);
 			 	
 			 	ResultSet rs=stmt.executeQuery(sql);
@@ -82,12 +80,12 @@
 							point="-.-";
 					}
 					rs1.close();
-					list.append(String.format("<li ><a href=\"Read.jsp?bookid=%s class=\"image\"\" title=\"nihao\">"
+					list.append(String.format("<li ><a href=\"Read.jsp?bookid=%s\" class=\"image\"\" title=\"%s\">"
 					 		+"<img  src=\"%s\"height=\"200\" width=\"143\">"
 						 	+"<span class=\"point\">%s</span></a>"
 					 		+"<h3 class=\"bookname\"><a>%s</a></h3>"
 					 		+"<span class=\"tip\" >%s</span></li>",
-					 		rs.getString("book_id"),rs.getString("book_image"),point, rs.getString("book_info.book_name"),rs.getString("book_author")
+					 		rs.getString("book_id"),rs.getString("book_info"),rs.getString("book_image"),point, rs.getString("book_info.book_name"),rs.getString("book_author")
 					 	));
 				}
 				rs.close();
@@ -96,21 +94,7 @@
 		else if(request.getMethod().equalsIgnoreCase("get")){
 			if(op1.equals("qb")) {	
 				op2="全部";	
-				/*String sql=String.format("select book_id,book_image,round(avg(book_point),1) as point,book_info.book_name,book_author from book_info,book_point where book_point.book_name=book_info.book_name"
-		 					+" group by book_info.book_name limit %d,%d",pgno*pgcnt,pgcnt);
-				ResultSet rs=stmt.executeQuery(sql);
 				
-				while(rs.next()){
-					
-					list.append(String.format("<li ><a href=\"Read.jsp?bookid=%s class=\"image\"\" title=\"nihao\">"
-						 +"<img  src=\"%s\"height=\"200\" width=\"143\">"
-						 +"<span class=\"point\">%s</span></a>"
-						 +"<h3 class=\"bookname\"><a>%s</a></h3>"
-						 +"<span class=\"tip\" >%s</span></li>",
-						 rs.getString("book_id"),rs.getString("book_image"),rs.getString("point"), rs.getString("book_info.book_name"),rs.getString("book_author")
-						 ));
-				}
-				*/
 				String sql = String.format("select * from book_info  limit %d,%d",pgno*pgcnt,pgcnt);
 			 	
 			 	ResultSet rs=stmt.executeQuery(sql);
@@ -126,12 +110,12 @@
 							point="-.-";
 					}
 					rs1.close();
-					list.append(String.format("<li ><a href=\"Read.jsp?bookid=%s class=\"image\"\" title=\"nihao\">"
+					list.append(String.format("<li ><a href=\"Read.jsp?bookid=%s\" class=\"image\"\" title=\"%s\">"
 					 		+"<img  src=\"%s\"height=\"200\" width=\"143\">"
 						 	+"<span class=\"point\">%s</span></a>"
 					 		+"<h3 class=\"bookname\"><a>%s</a></h3>"
 					 		+"<span class=\"tip\" >%s</span></li>",
-					 		rs.getString("book_id"),rs.getString("book_image"),point, rs.getString("book_info.book_name"),rs.getString("book_author")
+					 		rs.getString("book_id"),rs.getString("book_info"),rs.getString("book_image"),point, rs.getString("book_info.book_name"),rs.getString("book_author")
 					 	));
 				}
 				
@@ -156,19 +140,7 @@
 					op2="历史";
 				else if(op1.equals("xh"))
 					op2="玄幻";
-			/*	String sql=String.format("select book_id,book_image,round(avg(book_point),1) as point,book_info.book_name,book_author from book_info,book_point where book_point.book_name=book_info.book_name"
-						+" and book_type='%s'  group by book_info.book_name limit %d,%d",op2,pgno*pgcnt,pgcnt);
-				
-				ResultSet rs=stmt.executeQuery(sql);
-				while(rs.next()){
-					list.append(String.format("<li ><a href=\"Read.jsp?bookid=%s class=\"image\"\" title=\"nihao\">"
-					 	+"<img  src=\"%s\"height=\"200\" width=\"143\">"
-					 	+"<span class=\"point\">%s</span></a>"
-					 	+"<h3 class=\"bookname\"><a>%s</a></h3>"
-					 	+"<span class=\"tip\" >%s</span></li>",
-					 	rs.getString("book_id"),rs.getString("book_image"),rs.getString("point"), rs.getString("book_info.book_name"),rs.getString("book_author")
-					 ));
-				}*/
+		
 				
 				String sql = String.format("select * from book_info where book_type='%s' limit %d,%d",op2,pgno*pgcnt,pgcnt);
 			 	
@@ -185,12 +157,12 @@
 							point="-.-";
 					}
 					rs1.close();
-					list.append(String.format("<li ><a href=\"Read.jsp?bookid=%s class=\"image\"\" title=\"nihao\">"
+					list.append(String.format("<li ><a href=\"Read.jsp?bookid=%s\" class=\"image\"\" title=\"%s\">"
 					 		+"<img  src=\"%s\"height=\"200\" width=\"143\">"
 						 	+"<span class=\"point\">%s</span></a>"
 					 		+"<h3 class=\"bookname\"><a>%s</a></h3>"
 					 		+"<span class=\"tip\" >%s</span></li>",
-					 		rs.getString("book_id"),rs.getString("book_image"),point, rs.getString("book_info.book_name"),rs.getString("book_author")
+					 		rs.getString("book_id"),rs.getString("book_info"),rs.getString("book_image"),point, rs.getString("book_info.book_name"),rs.getString("book_author")
 					 	));
 				}
 				
@@ -202,52 +174,52 @@
 	 	con=DriverManager.getConnection(connectString, 
 	                 	"user", "123");
 	 	stmt=con.createStatement();
-	 	String sql=String.format("select book_id,book_image,round(avg(book_point),1) as point,book_info.book_name,book_author from book_info,book_point where book_point.book_name=book_info.book_name "
+	 	String sql=String.format("select book_id,book_info,book_image,round(avg(book_point),1) as point,book_info.book_name,book_author from book_info,book_point where book_point.book_name=book_info.book_name "
 					+" group by book_info.book_name order by point desc");
 	 	ResultSet rs=stmt.executeQuery(sql);
 	 
 		int countnum=0;
 		while(rs.next()&&countnum<4) {
-			list2.append(String.format("<li ><a href=\"Read.jsp?bookid=%s class=\"image2\"\" title=\"nihao\">"
+			list2.append(String.format("<li ><a href=\"Read.jsp?bookid=%s\" class=\"image2\"\" title=\"%s\">"
 				 +"<img  src=\"%s\"height=\"200\" width=\"143\">"
 				 +"<span class=\"point2\">%s</span></a>"
 				 +"<h3 class=\"bookname2\"><a>%s</a></h3>"
 				 +"<span class=\"tip2\" >%s</span></li>",
-				 rs.getString("book_id"),rs.getString("book_image"),rs.getString("point"), rs.getString("book_info.book_name"),rs.getString("book_author")
+				 rs.getString("book_id"),rs.getString("book_info"),rs.getString("book_image"),rs.getString("point"), rs.getString("book_info.book_name"),rs.getString("book_author")
 				 ));
 			countnum++;
 		}
 	  	rs.close();
 		
-	  	String sql2="select book_id,book_image,round(avg(book_point),1) as point,book_info.book_name,book_author from book_info,book_point where book_point.book_name=book_info.book_name "
+	  	String sql2="select book_id,book_info,book_image,round(avg(book_point),1) as point,book_info.book_name,book_author from book_info,book_point where book_point.book_name=book_info.book_name "
 				+" group by book_info.book_name order by book_id desc";
 	 	ResultSet rs2=stmt.executeQuery(sql2);
 	 
 		int countnum2=0;
 		while(rs2.next()&&countnum2<4){
 		
-			list3.append(String.format("<li ><a href=\"Read.jsp?bookid=%s class=\"image2\"\" title=\"nihao\">"
+			list3.append(String.format("<li ><a href=\"Read.jsp?bookid=%s\" class=\"image2\"\" title=\"%s\">"
 				 +"<img  src=\"%s\"height=\"200\" width=\"143\">"
 				 +"<span class=\"point2\">%s</span></a>"
 				 +"<h3 class=\"bookname2\"><a>%s</a></h3>"
 				 +"<span class=\"tip2\" >%s</span></li>",
-				 rs2.getString("book_id"),rs2.getString("book_image"),rs2.getString("point"), rs2.getString("book_info.book_name"),rs2.getString("book_author")
+				 rs2.getString("book_id"),rs2.getString("book_info"),rs2.getString("book_image"),rs2.getString("point"), rs2.getString("book_info.book_name"),rs2.getString("book_author")
 				 ));
 			countnum2++;
 		}
 	  	rs2.close();	
 	  	
-		String sql3=String.format("select book_id,book_image,round(avg(book_point),1) as point,book_info.book_name,book_author from book_info,book_point where book_point.book_name=book_info.book_name "
+		String sql3=String.format("select book_id,book_info,book_image,round(avg(book_point),1) as point,book_info.book_name,book_author from book_info,book_point where book_point.book_name=book_info.book_name "
 				+" group by book_info.book_name order by book_id ");
 	 	ResultSet rs3=stmt.executeQuery(sql3);
 		int countnum3=0;
 		while(rs3.next()&&countnum3<4){
-			list4.append(String.format("<li ><a href=\"Read.jsp?bookid=%s class=\"image2\"\" title=\"nihao\">"
+			list4.append(String.format("<li ><a href=\"Read.jsp?bookid=%s\" class=\"image2\"\" title=\"%s\">"
 			 	+"<img  src=\"%s\"height=\"200\" width=\"143\">"
 			 	+"<span class=\"point2\">%s</span></a>"
 			 	+"<h3 class=\"bookname2\"><a>%s</a></h3>"
 			 	+"<span class=\"tip2\" >%s</span></li>",
-			 	rs3.getString("book_id"),rs3.getString("book_image"),rs3.getString("point"), rs3.getString("book_info.book_name"),rs3.getString("book_author")
+			 	rs3.getString("book_id"),rs3.getString("book_info"),rs3.getString("book_image"),rs3.getString("point"), rs3.getString("book_info.book_name"),rs3.getString("book_author")
 			 ));
 			countnum3++;
 		}
